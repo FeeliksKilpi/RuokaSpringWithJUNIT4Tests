@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Suosikkiruoat</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="content">
+	<h1 id="otsikko">Suosikkiruoka-annokset</h1>
+	<div>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" id="nappi"/>
+		</form>
+	</div>
+    <table id="taulukko">
+		<tr>
+		    <th>Ruoka</th>
+		    <th>Tyyppi</th>
+		    <th>Allergeenit</th>
+		    <th>Hinta (€)</th>
+		    <th>Ravintola</th>
+		    <th colspan=3>Valinnat</th>
+		</tr>  
+    	<tr th:each = "ruoka : ${ruoat}">
+    		<td th:text="${ruoka.nimi}"></td>
+    		<td th:text="${ruoka.tyyppi}"></td>
+    		<td th:text="${ruoka.allergeenit}"></td>
+    		<td th:text="${ruoka.hinta}"></td>
+    		<td th:text="${ruoka.ravintola.ravintolaNimi}"></td>
+ 				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/poista/{id}(id=${ruoka.id})}">Delete</a></td>
+ 				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/muokkaa/{id}(id=${ruoka.id})}">Edit</a></td>
+ 				<td><a th:href="@{/ruoka/{id}(id=${ruoka.id})}">JSON</a></td>      		
+    	</tr>
+    	<tr id="toiminnot">
+    		<th>Ruoan Lisäys ja Rest palvelut</th>
+    		<td><a href="/lisaa">Lisää Ruoka</a></td>
+    		<td><a href="/ruoat">Tilaa lista</a></td>
+    	</tr>
+    	
+     </table>
+	 
+	 <div id="ravintolalistaus">
+	 	<table id="taulukko">
+	 		<tr>
+	 			<th>Ravintola</th>
+	 			<th>kuvaus</th>
+	 			<th>sijainti</th>
+	 			<th>arvosana</th>
+	 		</tr>
+	 		<tr th:each = "ravintola : ${ravintolat}">
+	 			<td th:text="${ravintola.ravintolaNimi}"></td>
+	 			<td th:text="${ravintola.kuvaus}"></td>
+	 			<td th:text="${ravintola.sijainti}"></td>
+	 			<td th:text="${ravintola.arvosana}"></td>
+	 			<td th:text="${ravintola.ravintolaNimi}"></td>
+ 				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/poistaravintola/{id}(id=${ravintola.ravintolaId})}">Delete</a></td>
+ 				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/muokkaaravintola/{id}(id=${ravintola.ravintolaId})}">Edit</a></td>
+ 				<td><a th:href="@{/ravintola/{id}(id=${ravintola.ravintolaId})}">JSON</a></td>
+	 		</tr>
+	 		<tr id="toiminnot">
+    		<th>Ravintolan Lisäys ja Rest palvelut</th>
+    		<td><a href="/lisaaravintola">Lisää Ravintola</a></td>
+    		<td><a href="/ravintolat">Tilaa lista</a></td>
+    	</tr>
+	 	</table>
+	 </div>
+	 
+	 <footer>
+	 <p>Allergeenit: M = sisältää maitoa, L = sisältää laktoosia, G = sisältää gluteenia</p>
+	 </footer>
+</div>     	
+</body>
+</html>

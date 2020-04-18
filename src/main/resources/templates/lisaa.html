@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Suosikkiruoat</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+</head>
+<body>
+	<h1 id="otsikko">Lisää uusi Ruoka</h1>
+	<div>
+		<form id="kaavake" th:object="${ruoka}" th:action="@{tallenna}" action="#" method="post">
+		  	<label for="nimi">Annoksen nimi:</label>
+			<input type="text" id="nimi" th:field="*{nimi}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="tyyppi">Annoksen tyyppi (vege, liha, kala):</label>
+			<input type="text" id="tyyppi" th:field="*{tyyppi}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="allergeenit">Allergeenit (M, L, G):</label>
+			<input type="text" th:field="*{allergeenit}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="hinta">Hinta:</label>
+			<input type="text" th:field="*{hinta}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input id="nappi" type="submit" value="Save"></input>
+			<label for="categorylist">Ravintola:</label>
+			<select id="categorylist" th:field="*{ravintola}" class="form-control">
+			<option th:each="ravintola: ${ravintolat}"
+					th:value="${ravintola.ravintolaId}"
+					th:text="${ravintola.ravintolaNimi}"></option>
+			
+			</select>
+			<a id="nappi" href="/ruokasuosikit">Takaisin</a>
+		</form>
+	</div>
+</body>
+</html>

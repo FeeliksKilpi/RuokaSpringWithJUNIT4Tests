@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Suosikkiruoat</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+</head>
+<body>
+	<h1 id="otsikko">Lisää uusi Ravintola</h1>
+	<div>
+		<form id="kaavake" th:object="${ravintola}" th:action="@{tallennaravintola}" action="#" method="post">
+		  	<label for="nimi">Ravintolan nimi:</label>
+			<input type="text" id="nimi" th:field="*{ravintolaNimi}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="kuvaus">Ravintola kuvaus:</label>
+			<input type="text" id="kuvaus" th:field="*{kuvaus}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="sijainti">Ravintolan sijainti:</label>
+			<input type="text" th:field="*{sijainti}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="arvosana">Ravintolan arvosana (1-5):</label>
+			<input type="text" th:field="*{arvosana}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input id="nappi" type="submit" value="Save"></input>
+			<a id="nappi" href="/ruokasuosikit">Takaisin</a>
+		</form>
+	</div>
+</body>
+</html>

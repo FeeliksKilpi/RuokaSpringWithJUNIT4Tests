@@ -1,0 +1,66 @@
+.content {
+	margin: auto;
+	background-color: #ffffe6;
+}
+#otsikko {
+	padding-left: 50px;
+	font-size: 80px;
+	font-family: 'Shadows Into Light', cursive;
+	margin: auto;
+}
+#taulukko {
+	margin: 15px;
+	padding: 10px;
+}
+#taulukko td {
+	color: #fff;
+	background-color: #7c7c7c;
+	border: 3px solid #fff;
+  	padding: 12px;
+  	border-radius: 10px;
+  	
+}
+#taulukko td a {
+	
+	font-family: Gill Sans, sans-serif;
+	
+}
+#taulukko th {
+	font-family: Gill Sans, sans-serif;
+	font-size: 20px;
+	color: #fff;
+	padding: 8px;
+	background-color: #990033;
+	border: 3px solid #fff;
+	border-radius: 10px;
+	
+}
+#kaavake {
+	color: #fff;
+	background-color: #7c7c7c;
+	border: 3px solid #990033;
+  	margin: 15px;
+  	padding: 12px;
+  	border-radius: 10px;
+  	width: 30%;
+  	text-align: left;
+  	
+}
+#kaavake label, input {
+	font-family: Gill Sans, sans-serif;
+	padding: 5px;
+	
+}
+#kaavake label {
+	
+}
+#nappi {
+	font-family: Gill Sans, sans-serif;
+	font-size: 20px;
+	color: #fff;
+	padding: 10px;
+	background-color: #990033;
+	border: 1px solid #fff;
+	border-radius: 10px;
+	margin-left: 22px;
+}
